@@ -1,7 +1,7 @@
 # @Author: xiaolang
 # @Date:   2017-10-02 00:06:57
 # @Last Modified by:   panghongteng
-# @Last Modified time: 2017-10-11 12:01:00
+# @Last Modified time: 2017-10-11 12:05:49
 #!/bin/bash 
 
 apt update
@@ -21,4 +21,4 @@ mv .tmux.conf ~/
 # 根据输入的版本号安装php
 echo " 输入准备安装的PHP版本号: "
 read php_version
-apt -y install php-$php_version-cgi php-$php_version-cli php-$php_version-bcmath php-$php_version-common php-$php_version php-$php_version-curl php-$php_version-fpm php-$php_version-gd php-$php_version-imap php-$php_version-json php-$php_version-mbstring php-$php_version-mcrypt php-$php_version-odbc php-$php_version-opcache php-$php_version-pgsql php-$php_version-readline php-$php_version-xml php-$php_version-xmlrpc php-$php_version-zip
+apt -y install php$php_version-cgi php$php_version-cli php$php_version-bcmath php$php_version-common php$php_version php$php_version-curl php$php_version-fpm php$php_version-gd php$php_version-imap php$php_version-json php$php_version-mbstring php$php_version-mcrypt php$php_version-odbc php$php_version-opcache php$php_version-pgsql php$php_version-readline php$php_version-xml php$php_version-xmlrpc php$php_version-zip
