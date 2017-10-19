@@ -1,7 +1,7 @@
 # @Author: xiaolang
 # @Date:   2017-10-02 00:06:57
 # @Last Modified by:   panghongteng
-# @Last Modified time: 2017-10-19 11:09:18
+# @Last Modified time: 2017-10-19 23:58:52
 #!/bin/bash 
 
 apt update
@@ -11,8 +11,10 @@ LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
 apt update
 apt -y upgrade
 
-# build-essential编译程序所需要的包 libevent-dev是编译memcache时需要的 
-apt -y install git wget vim tmux mosh zsh build-essential libevent-dev
+# build-essential libtool编译程序所需要的包,包含常用的一些编译组件 libevent-dev是编译memcache时需要的 
+apt -y install git wget vim tmux mosh zsh build-essential libevent-dev libtool
+# nginx 所用到的组件
+apt -y install libpcre3 libpcre3-dev openssl libssl-dev zlib1g-dev libpng-dev
 # 安装oh-my-zsh
 sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)" &
 # 获取tmux的配置文件，并替换
@@ -28,10 +30,9 @@ apt -y install php${php_version}-cgi php${php_version}-cli php${php_version}-bcm
 # 安装memcache
 read -p "是否需要安装最新版的memcached: [y/n]" is_install_memcached
 if [[ $is_install_memcached == y ]]; then
-    wget -O memcached-download wget http://memcached.org/latest
+    wget -O memcached-download http://memcached.org/latest
     tar -zxvf memcached-download
-    mv memcached-* memcached-src
-    cd memcached-src
+    cd memcached-*
     ./configure --prefix=/usr/local/memcached
     make && make test && sudo make install
     echo memcached 安装成功
